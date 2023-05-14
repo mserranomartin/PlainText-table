@@ -24,14 +24,14 @@
         let out = document.getElementById('output');
         let button = document.getElementById('make');
         button.addEventListener('click', e => {
-            output.value = tableMaker(input.value);
+            out.value = tableMaker(input.value);
         })
         document.getElementById('copy').addEventListener('click', () => {
             navigator.clipboard.writeText(out.value).then(function() {
                 console.log(out.value);
             }, function(err) {
                 console.error('Could not copy text: ', err);
-        });
+            });
         })
         input.value = ',LAWFUL,NEUTRAL,CHAOTIC\nGOOD,taurus,leo,cancer\nNEUTRAL,capricorn,aries,virgo\nEVIL,scorpio,sagittarius,gemini';
         button.click();

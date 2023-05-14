@@ -1,7 +1,9 @@
 function tableMaker(text) {
     let table = tablificar(text);
     let widths = getWidths(table);
-    return output(table, widths)
+    let out = output(table, widths);
+    if (out[0] == ' ') {out = '\u00A0'+out.substring(1)}
+    return out
 }
 
 function tablificar(text) {

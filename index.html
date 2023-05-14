@@ -15,15 +15,23 @@
         <p>DON'T include unnecessary spaces after commas. Follow the example.</p>
         <p>Use a <span class="font-monospace">monospace</span> font.</p>
         <textarea name="in" id="input" cols="30" rows="10" class="font-monospace form-control mb-2"></textarea>
-        <button class="btn btn-primary mb-2">Make table</button>
+        <button id="make" class="btn btn-primary mb-2">Make table</button>
         <textarea name="out" id="output" cols="30" rows="10" class="font-monospace form-control"></textarea>
+        <button id="copy" class="btn btn-primary mb-2">Copy</button>
     </main>
     <script>
         let input = document.getElementById('input');
-        let button = document.querySelector('button');
+        let out = document.getElementById('output');
+        let button = document.getElementById('make');
         button.addEventListener('click', e => {
-            console.log(input.textContent)
-            document.getElementById('output').value = tableMaker(input.value);
+            output.value = tableMaker(input.value);
+        })
+        document.getElementById('copy').addEventListener('click', () => {
+            navigator.clipboard.writeText(out.value).then(function() {
+                console.log(out.value);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+        });
         })
         input.value = ',LAWFUL,NEUTRAL,CHAOTIC\nGOOD,taurus,leo,cancer\nNEUTRAL,capricorn,aries,virgo\nEVIL,scorpio,sagittarius,gemini';
         button.click();

@@ -2,7 +2,7 @@ function tableMaker(text) {
     let table = tablificar(text);
     let widths = getWidths(table);
     let out = output(table, widths);
-    if (out[0] == ' ') {out = '\u00A0'+out.substring(1)}
+    if (out[0] == ' ') {out = '\u3164'+out.substring(1)}
     return out
 }
 
